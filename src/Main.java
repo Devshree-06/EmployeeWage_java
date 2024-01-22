@@ -9,6 +9,7 @@ public class Main {
         //mod 2 is done to ensure result is either 0 or 1
         int check=(int)(Math.random()*10)%3;
 
+
         if(check==0){
             e.attendance=0;
         }
@@ -19,7 +20,7 @@ public class Main {
             e.attendance=2;
         }
 
-        if(e.attendance==1){
+        /*if(e.attendance==1){
             e.workhour=8;
             System.out.println("Employee is Present");
         }
@@ -29,6 +30,20 @@ public class Main {
         else{
             e.workhour=4;
             System.out.println("Employee did part time");
+        }*/
+        switch(e.attendance){
+            case 1:
+                e.workhour=8;
+                System.out.println("Employee is Present");
+                break;
+            case 2:
+                System.out.println("Employee is Absent");
+                break;
+            default:
+                e.workhour=4;
+                System.out.println("Employee did Part-time");
+                break;
+
         }
 
         Main m_obj=new Main();
