@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) {
         //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
         // to see how IntelliJ IDEA suggests fixing it.
-        Employee e=new Employee("abc",123);
+        Employee e=new Employee("abc",123,20);
 
         //mod 2 is done to ensure result is either 0 or 1
         int check=(int)(Math.random()*10)%3;
@@ -51,7 +51,8 @@ public class Main {
 
 
     }
+
     double calculateWage(Employee e1){
-        return e1.workhour*e1.wageperhour;
+        return e1.workhour*e1.wageperhour*20;
     }
 }
