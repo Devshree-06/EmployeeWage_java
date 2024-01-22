@@ -7,21 +7,28 @@ public class Main {
         Employee e=new Employee("abc",123);
 
         //mod 2 is done to ensure result is either 0 or 1
-        int check=(int)(Math.random()*10)%2;
+        int check=(int)(Math.random()*10)%3;
 
         if(check==0){
-            e.attendance=false;
+            e.attendance=0;
+        }
+        else if(check==1){
+            e.attendance=1;
         }
         else{
-            e.attendance=true;
+            e.attendance=2;
         }
 
-        if(e.attendance){
+        if(e.attendance==1){
             e.workhour=8;
             System.out.println("Employee is Present");
         }
-        else{
+        else if(e.attendance==0){
             System.out.println("Employee is Absent");
+        }
+        else{
+            e.workhour=4;
+            System.out.println("Employee did part time");
         }
 
         Main m_obj=new Main();
