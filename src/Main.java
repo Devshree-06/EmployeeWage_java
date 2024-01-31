@@ -6,7 +6,10 @@ public class Main {
         // to see how IntelliJ IDEA suggests fixing it.
         Employee e=new Employee();
         e.EmployeeResult(3,"abc",3,10);
-        e.EmployeeResult(5,"def",5,10);
+        System.out.println("Total saved wage of the employee is : "+e.Savedwage("abc"));
+
+        //e.EmployeeResult(5,"def",5,10);
+
 
 
 

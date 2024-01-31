@@ -1,4 +1,5 @@
 import org.w3c.dom.ls.LSOutput;
+import java.util.*;
 
 public class Employee {
     String name;
@@ -11,6 +12,7 @@ public class Employee {
     Integer wageperhour=20;
     Integer attendance;
     Integer Month;
+    Map<String,Integer>Savewage=new HashMap<>();
 
     int EmployeeResult(int ehours,String cname,int totalworkdays,int maxmomnthhours){
 
@@ -39,9 +41,13 @@ public class Employee {
         System.out.println("Total number of days: "+totaldays+" Total number of hours: "+totalworkhour);
         int res=totalworkhour*ehours;
         System.out.println("Total wage of the employee of company "+cname+" is "+res);
+        Savewage.put(cname,res);
 
         return res;
 
+    }
+    public int Savedwage(String cname){
+        return Savewage.getOrDefault(cname,0);
     }
 
 
