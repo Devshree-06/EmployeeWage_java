@@ -1,69 +1,47 @@
+import org.w3c.dom.ls.LSOutput;
+
 public class Employee {
     String name;
     Integer id;
+    public static final int Part_time=1;
+    public static final int Full_time=2;
+
 
     Integer workhour=0;
     Integer wageperhour=20;
     Integer attendance;
     Integer Month;
 
-    Employee(String n,Integer i,Integer w){
-        this.name=n;
-        this.id=i;
-        this.wageperhour=w;
-    }
-    void EmployeeResult(){
+    int EmployeeResult(int ehours,String cname,int totalworkdays,int maxmomnthhours){
+
         int totalworkhour=0;
         int totaldays=0;
-        while(totalworkhour<100 || totaldays<20) {
+        int emphr=0;
+        while(totalworkhour<=maxmomnthhours || totaldays<=totalworkdays) {
             //mod 2 is done to ensure result is either 0 or 1
             int check = (int) (Math.random() * 10) % 3;
-
-
-            if (check == 0) {
-                attendance = 0;
-            } else if (check == 1) {
-                attendance = 1;
-            } else {
-                attendance = 2;
-            }
-
-        /*if(e.attendance==1){
-            e.workhour=8;
-            System.out.println("Employee is Present");
-        }
-        else if(e.attendance==0){
-            System.out.println("Employee is Absent");
-        }
-        else{
-            e.workhour=4;
-            System.out.println("Employee did part time");
-        }*/
-            switch (attendance) {
-                case 1:
-                    workhour = 8;
-                    System.out.println("Employee is Present");
+            switch(check){
+                case Part_time:
+                    emphr=4;
                     break;
-                case 2:
-                    System.out.println("Employee is Absent");
+                case Full_time:
+                    emphr=8;
                     break;
                 default:
-                    workhour = 4;
-                    System.out.println("Employee did Part-time");
-                    break;
+                    emphr=0;
+
 
             }
             totaldays++;
-            totalworkhour+=workhour;
+            totalworkhour+=emphr;
         }
 
-        System.out.println("Total number of days:"+totaldays+"Total number of hours: "+totalworkhour);
-    }
-    double TotalSalary(){
-        return workhour*workhour*20;
-    }
-    double TotalWage(){
-        return workhour*wageperhour;
+        System.out.println("Total number of days: "+totaldays+" Total number of hours: "+totalworkhour);
+        int res=totalworkhour*ehours;
+        System.out.println("Total wage of the employee of company "+cname+" is "+res);
+
+        return res;
+
     }
 
 
