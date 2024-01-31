@@ -12,10 +12,11 @@ public class Employee {
     Integer wageperhour=20;
     Integer attendance;
     Integer Month;
-    Map<String,Integer>Savewage=new HashMap<>();
+    Map<String,List<Integer>>Savewage=new HashMap<>();
 
-    int EmployeeResult(int ehours,String cname,int totalworkdays,int maxmomnthhours){
+    public void EmployeeResult(int ehours,String cname,int totalworkdays,int maxmomnthhours){
 
+        List<Integer>everydaywages=new ArrayList<>();
         int totalworkhour=0;
         int totaldays=0;
         int emphr=0;
@@ -36,19 +37,21 @@ public class Employee {
             }
             totaldays++;
             totalworkhour+=emphr;
+            everydaywages.add(totalworkhour*ehours);
         }
 
         System.out.println("Total number of days: "+totaldays+" Total number of hours: "+totalworkhour);
         int res=totalworkhour*ehours;
         System.out.println("Total wage of the employee of company "+cname+" is "+res);
-        Savewage.put(cname,res);
+        Savewage.put(cname,everydaywages);
 
-        return res;
 
     }
-    public int Savedwage(String cname){
-        return Savewage.getOrDefault(cname,0);
+    public int Companytotalwage(String cname){
+        List<Integer>wages=Savewage.get(cname);
+        return wages!=null?wages.stream().mapToInt(Integer::intValue).sum():0;
     }
+
 
 
 
